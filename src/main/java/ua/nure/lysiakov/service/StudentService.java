@@ -1,15 +1,18 @@
 package ua.nure.lysiakov.service;
 
-import org.springframework.stereotype.Service;
-import ua.nure.lysiakov.repository.StudentRepository;
+import java.util.List;
+import ua.nure.lysiakov.model.Student;
 
-@Service
-public class StudentService {
+public interface StudentService {
 
-  private final StudentRepository studentRepository;
+  List<Student> findAllStudents();
 
-  public StudentService(StudentRepository studentRepository) {
-    this.studentRepository = studentRepository;
-  }
+  Student findStudentById(Long id);
+
+  Student addStudent(Student student);
+
+  Student updateStudent(Student student);
+
+  boolean deleteStudent(Long id);
 
 }

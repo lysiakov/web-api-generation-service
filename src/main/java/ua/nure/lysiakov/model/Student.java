@@ -18,7 +18,7 @@ public class Student {
   @NotBlank
   private String email;
   @NotNull
-  private Integer age;
+  private Long groupId;
 
   public Long getId() {
     return id;
@@ -44,11 +44,11 @@ public class Student {
     this.email = email;
   }
 
-  public int getAge() {
-    return age;
+  public Long getGroupId() {
+    return groupId;
   }
 
-  public void setAge(int age) {
-    this.age = age;
+  public void setGroupId(Long groupId) {
+    this.groupId = groupId;
   }
 }

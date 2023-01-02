@@ -1,0 +1,101 @@
+<xs:schema
+  elementFormDefault="qualified"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:tns="www.nure.ua/lysiakov/web-api-generation"
+  targetNamespace="www.nure.ua/lysiakov/web-api-generation">
+
+  <xs:complexType name="studentResponse">
+      <xs:sequence>
+        <xs:element type="xs:long" name="id"/>
+        <xs:element type="xs:string" name="name"/>
+        <xs:element type="xs:string" name="email"/>
+        <xs:element type="xs:long" name="groupId"/>
+      </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="serviceStatus">
+    <xs:sequence>
+      <xs:element name="statusCode" type="xs:string"/>
+      <xs:element name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="getAllStudentsRequest">
+    <xs:complexType/>
+  </xs:element>
+
+  <xs:element name="getAllStudentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="student" type="tns:studentResponse" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getStudentByIdRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="studentId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="getStudentByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="student" type="tns:studentResponse"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="addStudentRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="name"/>
+        <xs:element type="xs:string" name="email"/>
+        <xs:element type="xs:long" name="groupId"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addStudentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="student" type="tns:studentResponse"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="updateStudentRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:long" name="id"/>
+        <xs:element type="xs:string" name="name"/>
+        <xs:element type="xs:string" name="email"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateStudentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="student" type="tns:studentResponse"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="deleteStudentRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="studentId" type="xs:long"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteStudentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
